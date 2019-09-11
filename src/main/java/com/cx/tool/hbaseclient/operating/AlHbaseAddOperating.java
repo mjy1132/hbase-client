@@ -50,7 +50,7 @@ public class AlHbaseAddOperating {
      * @param put 列族名
      * @throws IOException
      */
-    public void insert(String tableName, Put put) throws IOException {
+    public static void insert(String tableName, Put put) throws IOException {
         Table table = AlHbaseConnection.getTable(tableName);
         table.put(put);
         table.close();
@@ -62,7 +62,7 @@ public class AlHbaseAddOperating {
      * @param putList 列族名
      * @throws IOException
      */
-    public void insertBatch(String tableName, List<Put> putList) throws IOException {
+    public static void insertBatch(String tableName, List<Put> putList) throws IOException {
         Table table = AlHbaseConnection.getTable(tableName);
         table.put(putList);
         table.close();
