@@ -35,11 +35,9 @@ public class AlHbaseQueryOperating {
         Get get = new Get(rowKey.getBytes());
         get.addColumn(family.getBytes(), qualifier.getBytes());
         Result result = table.get(get);
-
         String resultSt = null;
-        if (result.getExists()) {
+        if(result.rawCells().length > 0 ){
             resultSt = new String(result.getValue(family.getBytes(), qualifier.getBytes()), "UTF-8");
-
         }
         table.close();
         return resultSt;
@@ -60,8 +58,8 @@ public class AlHbaseQueryOperating {
         Get get = new Get(rowKey.getBytes());
         get.addFamily(family.getBytes());
         Result result = table.get(get);
-        if(result.getExists()){
-            Cell[] cells = result.rawCells();
+        Cell[] cells = result.rawCells();
+        if(cells.length > 0 ){
             for (Cell cell : cells) {
                 String qualifier = new String(CellUtil.cloneQualifier(cell), "UTF-8");
                 String value = new String(CellUtil.cloneValue(cell), "UTF-8");
