@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.cx.tool</groupId>
     <artifactId>hbase-client</artifactId>
-    <version>0.0.4</version>
+    <version>0.0.5</version>
     <name>hbase-client</name>
     <description>Demo project for Spring Boot</description>
 
