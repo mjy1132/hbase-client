@@ -5,6 +5,7 @@ import org.apache.hadoop.hbase.TableName;
 import org.apache.hadoop.hbase.client.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -67,5 +68,36 @@ public class AlHbaseAddOperating {
         table.put(putList);
         table.close();
 
+    }
+
+    /**
+     * 删除行
+     * @param tableName 表名
+     * @param rowKey
+     * @throws IOException
+     */
+    public static void deleteRow(String tableName,String rowKey) throws IOException {
+        Table table = AlHbaseConnection.getTable(tableName);
+        Delete delete = new Delete(rowKey.getBytes());
+        table.delete(delete);
+        table.close();
+    }
+
+    /**
+     * 删除多行
+     * @param tableName 表名
+     * @param rowKeyList
+     * @throws IOException
+     */
+    public static void deleteRows(String tableName,List<String> rowKeyList) throws IOException {
+        if(null != rowKeyList && !rowKeyList.isEmpty()){
+            Table table = AlHbaseConnection.getTable(tableName);
+            List<Delete> deleteList = new ArrayList<Delete>();
+            rowKeyList.forEach(rowKey ->{
+                deleteList.add(new Delete(rowKey.getBytes()));
+            });
+            table.delete(deleteList);
+            table.close();
+        }
     }
 }

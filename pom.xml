@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.cx.tool</groupId>
     <artifactId>hbase-client</artifactId>
-    <version>0.0.5</version>
+    <version>0.0.6</version>
     <name>hbase-client</name>
     <description>Demo project for Spring Boot</description>
 
@@ -45,6 +45,14 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
             </plugin>
         </plugins>
     </build>

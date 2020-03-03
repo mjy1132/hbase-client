@@ -21,10 +21,10 @@ public class HbaseClientApplication {
     public static void main(String[] args) throws IOException {
 
         AlHbaseConnection.createConnection("hb-proxy-pub-bp14m3b9dkuimkd34-master2-001.hbase.rds.aliyuncs.com:2181,hb-proxy-pub-bp14m3b9dkuimkd34-master1-001.hbase.rds.aliyuncs.com:2181,hb-proxy-pub-bp14m3b9dkuimkd34-master3-001.hbase.rds.aliyuncs.com:2181");
-        List<JSONObject> resultList = AlHbaseQueryOperating.selectByTableNameDataAll("userpaycommon", "userpaycommonfamily");
-        for (JSONObject st : resultList){
-            System.out.println(st);
-        }
+
+        AlHbaseAddOperating.deleteRow("userpaycommon","om9w_1Ni9VoKZQOr-9VkdF4LZtWM");
+        String  resultList = AlHbaseQueryOperating.selectByQualifierData("userpaycommon", "userpaycommonfamily","common","om9w_1Ni9VoKZQOr-9VkdF4LZtWM");
+        System.out.println(resultList);
     }
 
 }
